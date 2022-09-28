@@ -8,5 +8,18 @@ exports.register = function (req, res) {
   //   res.send("thank you for registering");
   //   console.log(req.body);
   let user = new User(req.body);
-  res.send("thanks for registereing");
+  user.register();
+
+  // console.log(user);
+  if (user.errors.length) {
+    res.send(user.errors);
+  } else {
+    res.send("user registerd");
+  }
+
+  // res.send("thanks for  trying to register");
+};
+
+exports.login = function (req, res) {
+  res.send("user login captured");
 };
