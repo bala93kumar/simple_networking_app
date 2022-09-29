@@ -21,5 +21,14 @@ exports.register = function (req, res) {
 };
 
 exports.login = function (req, res) {
-  res.send("user login captured");
+  // res.send("user login captured");
+  let user = new User(req.body);
+  user
+    .login()
+    .then(function (result) {
+      res.send(result);
+    })
+    .catch(function (err) {
+      res.send(err);
+    });
 };

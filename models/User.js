@@ -51,4 +51,22 @@ User.prototype.register = function () {
   }
 };
 
+User.prototype.login = function () {
+  return new Promise((resolve, reject) => {
+    this.cleanUp;
+    db_collection.findOne(
+      { username: this.act_data.username },
+      (err, attemptedUser) => {
+        if (attemptedUser && attemptedUser.password == this.act_data.password) {
+          // console.log("congrats");
+          resolve("congrats");
+        } else {
+          // console.log("authentication failed");
+          reject("invalid user name or password");
+        }
+      }
+    );
+  });
+};
+
 module.exports = User;

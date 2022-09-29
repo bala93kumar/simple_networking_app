@@ -10,7 +10,7 @@ async function start() {
   await client.connect();
   module.exports = client.db();
   const app = require("./app");
-  app.listen(3000);
+  app.listen(process.env.PORT);
 }
 
 start();
